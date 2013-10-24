@@ -115,6 +115,31 @@
   MusicTrackGetProperty(track, kSequenceTrackProperty_TrackLength, &length, &size);
   NSLog(@"Track length in beats: %f", length);
   
+  // print out all of the events in the track
+  MusicEventIterator eventIterator;
+  NewMusicEventIterator(track, &eventIterator);
+  Boolean hasEvent = false;
+  MusicEventIteratorHasCurrentEvent(eventIterator, &hasEvent);
+  while(hasEvent)
+  {
+    MusicTimeStamp eventTime;
+    MusicEventType eventType = 0;
+    const void *eventData = NULL;
+    UInt32 eventDataSize;
+    
+    MusicEventIteratorGetEventInfo(eventIterator, &eventTime, &eventType, &eventData, &eventDataSize);
+    NSLog(@"Event %f: Type = %lu, Data = %p, Size = %lu", eventTime, eventType, eventData, eventDataSize);
+    
+    if(eventType == kMusicEventType_MIDINoteMessage)
+    {
+      MIDINoteMessage *message = (MIDINoteMessage *)eventData;
+      NSLog(@"MIDINoteMessage. channel: %i, note: %i, velocity: %i, release velocity: %i, duration: %f", message->channel, message->note, message->velocity, message->releaseVelocity, message->duration);
+    }
+    
+    MusicEventIteratorNextEvent(eventIterator);
+    MusicEventIteratorHasNextEvent(eventIterator, &hasEvent);
+  }
+  
   OSStatus result = noErr;
   
   while(1)
@@ -140,6 +165,7 @@
   MusicPlayerStop(player);
   DisposeMusicSequence(sequence);
   DisposeMusicPlayer(player);
+  DisposeMusicEventIterator(eventIterator);
 }
 
 @end
