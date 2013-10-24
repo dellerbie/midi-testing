@@ -1,0 +1,509 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CE1568DB1819A08A0044F9CC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE1568DA1819A08A0044F9CC /* Foundation.framework */; };
+		CE1568DD1819A08A0044F9CC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE1568DC1819A08A0044F9CC /* CoreGraphics.framework */; };
+		CE1568DF1819A08A0044F9CC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE1568DE1819A08A0044F9CC /* UIKit.framework */; };
+		CE1568E51819A08A0044F9CC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE1568E31819A08A0044F9CC /* InfoPlist.strings */; };
+		CE1568E71819A08A0044F9CC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1568E61819A08A0044F9CC /* main.m */; };
+		CE1568EB1819A08A0044F9CC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1568EA1819A08A0044F9CC /* AppDelegate.m */; };
+		CE1568EE1819A08A0044F9CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE1568EC1819A08A0044F9CC /* Main.storyboard */; };
+		CE1568F11819A08A0044F9CC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1568F01819A08A0044F9CC /* ViewController.m */; };
+		CE1568F31819A08A0044F9CC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE1568F21819A08A0044F9CC /* Images.xcassets */; };
+		CE1568FA1819A08A0044F9CC /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE1568F91819A08A0044F9CC /* XCTest.framework */; };
+		CE1568FB1819A08A0044F9CC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE1568DA1819A08A0044F9CC /* Foundation.framework */; };
+		CE1568FC1819A08A0044F9CC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE1568DE1819A08A0044F9CC /* UIKit.framework */; };
+		CE1569041819A08A0044F9CC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE1569021819A08A0044F9CC /* InfoPlist.strings */; };
+		CE1569061819A08A0044F9CC /* MidiTestingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1569051819A08A0044F9CC /* MidiTestingTests.m */; };
+		CE1569121819A0DE0044F9CC /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE15690F1819A0DE0044F9CC /* AudioToolbox.framework */; };
+		CE1569131819A0DE0044F9CC /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE1569101819A0DE0044F9CC /* CoreAudio.framework */; };
+		CE1569141819A0DE0044F9CC /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE1569111819A0DE0044F9CC /* CoreMIDI.framework */; };
+		CE1569171819A11F0044F9CC /* AudioTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1569161819A11F0044F9CC /* AudioTest.m */; };
+		CE15691B1819A13B0044F9CC /* Gorts_Filters.SF2 in Resources */ = {isa = PBXBuildFile; fileRef = CE1569191819A13B0044F9CC /* Gorts_Filters.SF2 */; };
+		CE15691C1819A13B0044F9CC /* simpletest.mid in Resources */ = {isa = PBXBuildFile; fileRef = CE15691A1819A13B0044F9CC /* simpletest.mid */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CE1568FD1819A08A0044F9CC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CE1568CF1819A08A0044F9CC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CE1568D61819A08A0044F9CC;
+			remoteInfo = MidiTesting;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		CE1568D71819A08A0044F9CC /* MidiTesting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MidiTesting.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE1568DA1819A08A0044F9CC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		CE1568DC1819A08A0044F9CC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		CE1568DE1819A08A0044F9CC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		CE1568E21819A08A0044F9CC /* MidiTesting-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MidiTesting-Info.plist"; sourceTree = "<group>"; };
+		CE1568E41819A08A0044F9CC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CE1568E61819A08A0044F9CC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CE1568E81819A08A0044F9CC /* MidiTesting-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MidiTesting-Prefix.pch"; sourceTree = "<group>"; };
+		CE1568E91819A08A0044F9CC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		CE1568EA1819A08A0044F9CC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		CE1568ED1819A08A0044F9CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CE1568EF1819A08A0044F9CC /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		CE1568F01819A08A0044F9CC /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		CE1568F21819A08A0044F9CC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		CE1568F81819A08A0044F9CC /* MidiTestingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MidiTestingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE1568F91819A08A0044F9CC /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		CE1569011819A08A0044F9CC /* MidiTestingTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MidiTestingTests-Info.plist"; sourceTree = "<group>"; };
+		CE1569031819A08A0044F9CC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CE1569051819A08A0044F9CC /* MidiTestingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MidiTestingTests.m; sourceTree = "<group>"; };
+		CE15690F1819A0DE0044F9CC /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		CE1569101819A0DE0044F9CC /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		CE1569111819A0DE0044F9CC /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
+		CE1569151819A11F0044F9CC /* AudioTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioTest.h; sourceTree = "<group>"; };
+		CE1569161819A11F0044F9CC /* AudioTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioTest.m; sourceTree = "<group>"; };
+		CE1569191819A13B0044F9CC /* Gorts_Filters.SF2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Gorts_Filters.SF2; sourceTree = "<group>"; };
+		CE15691A1819A13B0044F9CC /* simpletest.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = simpletest.mid; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CE1568D41819A08A0044F9CC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE1569121819A0DE0044F9CC /* AudioToolbox.framework in Frameworks */,
+				CE1569131819A0DE0044F9CC /* CoreAudio.framework in Frameworks */,
+				CE1569141819A0DE0044F9CC /* CoreMIDI.framework in Frameworks */,
+				CE1568DD1819A08A0044F9CC /* CoreGraphics.framework in Frameworks */,
+				CE1568DF1819A08A0044F9CC /* UIKit.framework in Frameworks */,
+				CE1568DB1819A08A0044F9CC /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE1568F51819A08A0044F9CC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE1568FA1819A08A0044F9CC /* XCTest.framework in Frameworks */,
+				CE1568FC1819A08A0044F9CC /* UIKit.framework in Frameworks */,
+				CE1568FB1819A08A0044F9CC /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CE1568CE1819A08A0044F9CC = {
+			isa = PBXGroup;
+			children = (
+				CE1569181819A12D0044F9CC /* Resources */,
+				CE1568E01819A08A0044F9CC /* MidiTesting */,
+				CE1568FF1819A08A0044F9CC /* MidiTestingTests */,
+				CE1568D91819A08A0044F9CC /* Frameworks */,
+				CE1568D81819A08A0044F9CC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CE1568D81819A08A0044F9CC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CE1568D71819A08A0044F9CC /* MidiTesting.app */,
+				CE1568F81819A08A0044F9CC /* MidiTestingTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CE1568D91819A08A0044F9CC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CE15690F1819A0DE0044F9CC /* AudioToolbox.framework */,
+				CE1569101819A0DE0044F9CC /* CoreAudio.framework */,
+				CE1569111819A0DE0044F9CC /* CoreMIDI.framework */,
+				CE1568DA1819A08A0044F9CC /* Foundation.framework */,
+				CE1568DC1819A08A0044F9CC /* CoreGraphics.framework */,
+				CE1568DE1819A08A0044F9CC /* UIKit.framework */,
+				CE1568F91819A08A0044F9CC /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CE1568E01819A08A0044F9CC /* MidiTesting */ = {
+			isa = PBXGroup;
+			children = (
+				CE1568E91819A08A0044F9CC /* AppDelegate.h */,
+				CE1568EA1819A08A0044F9CC /* AppDelegate.m */,
+				CE1568EC1819A08A0044F9CC /* Main.storyboard */,
+				CE1568EF1819A08A0044F9CC /* ViewController.h */,
+				CE1568F01819A08A0044F9CC /* ViewController.m */,
+				CE1569151819A11F0044F9CC /* AudioTest.h */,
+				CE1569161819A11F0044F9CC /* AudioTest.m */,
+				CE1568F21819A08A0044F9CC /* Images.xcassets */,
+				CE1568E11819A08A0044F9CC /* Supporting Files */,
+			);
+			path = MidiTesting;
+			sourceTree = "<group>";
+		};
+		CE1568E11819A08A0044F9CC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CE1568E21819A08A0044F9CC /* MidiTesting-Info.plist */,
+				CE1568E31819A08A0044F9CC /* InfoPlist.strings */,
+				CE1568E61819A08A0044F9CC /* main.m */,
+				CE1568E81819A08A0044F9CC /* MidiTesting-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CE1568FF1819A08A0044F9CC /* MidiTestingTests */ = {
+			isa = PBXGroup;
+			children = (
+				CE1569051819A08A0044F9CC /* MidiTestingTests.m */,
+				CE1569001819A08A0044F9CC /* Supporting Files */,
+			);
+			path = MidiTestingTests;
+			sourceTree = "<group>";
+		};
+		CE1569001819A08A0044F9CC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CE1569011819A08A0044F9CC /* MidiTestingTests-Info.plist */,
+				CE1569021819A08A0044F9CC /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CE1569181819A12D0044F9CC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CE1569191819A13B0044F9CC /* Gorts_Filters.SF2 */,
+				CE15691A1819A13B0044F9CC /* simpletest.mid */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CE1568D61819A08A0044F9CC /* MidiTesting */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE1569091819A08A0044F9CC /* Build configuration list for PBXNativeTarget "MidiTesting" */;
+			buildPhases = (
+				CE1568D31819A08A0044F9CC /* Sources */,
+				CE1568D41819A08A0044F9CC /* Frameworks */,
+				CE1568D51819A08A0044F9CC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MidiTesting;
+			productName = MidiTesting;
+			productReference = CE1568D71819A08A0044F9CC /* MidiTesting.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CE1568F71819A08A0044F9CC /* MidiTestingTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE15690C1819A08A0044F9CC /* Build configuration list for PBXNativeTarget "MidiTestingTests" */;
+			buildPhases = (
+				CE1568F41819A08A0044F9CC /* Sources */,
+				CE1568F51819A08A0044F9CC /* Frameworks */,
+				CE1568F61819A08A0044F9CC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CE1568FE1819A08A0044F9CC /* PBXTargetDependency */,
+			);
+			name = MidiTestingTests;
+			productName = MidiTestingTests;
+			productReference = CE1568F81819A08A0044F9CC /* MidiTestingTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CE1568CF1819A08A0044F9CC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = dellerbie;
+				TargetAttributes = {
+					CE1568F71819A08A0044F9CC = {
+						TestTargetID = CE1568D61819A08A0044F9CC;
+					};
+				};
+			};
+			buildConfigurationList = CE1568D21819A08A0044F9CC /* Build configuration list for PBXProject "MidiTesting" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CE1568CE1819A08A0044F9CC;
+			productRefGroup = CE1568D81819A08A0044F9CC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CE1568D61819A08A0044F9CC /* MidiTesting */,
+				CE1568F71819A08A0044F9CC /* MidiTestingTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CE1568D51819A08A0044F9CC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE1568F31819A08A0044F9CC /* Images.xcassets in Resources */,
+				CE15691B1819A13B0044F9CC /* Gorts_Filters.SF2 in Resources */,
+				CE15691C1819A13B0044F9CC /* simpletest.mid in Resources */,
+				CE1568E51819A08A0044F9CC /* InfoPlist.strings in Resources */,
+				CE1568EE1819A08A0044F9CC /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE1568F61819A08A0044F9CC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE1569041819A08A0044F9CC /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CE1568D31819A08A0044F9CC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE1569171819A11F0044F9CC /* AudioTest.m in Sources */,
+				CE1568F11819A08A0044F9CC /* ViewController.m in Sources */,
+				CE1568EB1819A08A0044F9CC /* AppDelegate.m in Sources */,
+				CE1568E71819A08A0044F9CC /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE1568F41819A08A0044F9CC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE1569061819A08A0044F9CC /* MidiTestingTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CE1568FE1819A08A0044F9CC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CE1568D61819A08A0044F9CC /* MidiTesting */;
+			targetProxy = CE1568FD1819A08A0044F9CC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		CE1568E31819A08A0044F9CC /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CE1568E41819A08A0044F9CC /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		CE1568EC1819A08A0044F9CC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CE1568ED1819A08A0044F9CC /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		CE1569021819A08A0044F9CC /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CE1569031819A08A0044F9CC /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CE1569071819A08A0044F9CC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		CE1569081819A08A0044F9CC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CE15690A1819A08A0044F9CC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MidiTesting/MidiTesting-Prefix.pch";
+				INFOPLIST_FILE = "MidiTesting/MidiTesting-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		CE15690B1819A08A0044F9CC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MidiTesting/MidiTesting-Prefix.pch";
+				INFOPLIST_FILE = "MidiTesting/MidiTesting-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		CE15690D1819A08A0044F9CC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MidiTesting.app/MidiTesting";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MidiTesting/MidiTesting-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "MidiTestingTests/MidiTestingTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		CE15690E1819A08A0044F9CC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MidiTesting.app/MidiTesting";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MidiTesting/MidiTesting-Prefix.pch";
+				INFOPLIST_FILE = "MidiTestingTests/MidiTestingTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CE1568D21819A08A0044F9CC /* Build configuration list for PBXProject "MidiTesting" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE1569071819A08A0044F9CC /* Debug */,
+				CE1569081819A08A0044F9CC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CE1569091819A08A0044F9CC /* Build configuration list for PBXNativeTarget "MidiTesting" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE15690A1819A08A0044F9CC /* Debug */,
+				CE15690B1819A08A0044F9CC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		CE15690C1819A08A0044F9CC /* Build configuration list for PBXNativeTarget "MidiTestingTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE15690D1819A08A0044F9CC /* Debug */,
+				CE15690E1819A08A0044F9CC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CE1568CF1819A08A0044F9CC /* Project object */;
+}
