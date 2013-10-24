@@ -1,4 +1,4 @@
 midi-testing
 ============
 
-Attempt to build up to a guitar chord midi sequencer
+Attempt to build up a guitar chord progression midi sequencer
