@@ -113,12 +113,22 @@
   UInt32 size = sizeof(length);
   MusicSequenceGetIndTrack(sequence, 1, &track);
   MusicTrackGetProperty(track, kSequenceTrackProperty_TrackLength, &length, &size);
+  NSLog(@"Track length in beats: %f", length);
+  
+  OSStatus result = noErr;
   
   while(1)
   {
     usleep(3 * 1000 * 1000);
     MusicTimeStamp now = 0;
-    MusicPlayerGetTime(player, &now);
+    result = MusicPlayerGetTime(player, &now);
+    NSAssert (result == noErr, @"Unable to get the music player time. Error code: %d '%.4s'", (int) result, (const char *)&result);
+    NSLog(@"Current time: %6.2f beats", now);
+    
+    Float32 load;
+    result = AUGraphGetCPULoad(processingGraph, &load);
+    NSAssert (result == noErr, @"Unable to get cpu load. Error code: %d '%.4s'", (int) result, (const char *)&result);
+    NSLog(@"CPU Load: %.2f", load * 100.0);
     
     if(now >= length)
     {
