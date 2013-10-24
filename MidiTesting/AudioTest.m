@@ -142,4 +142,65 @@
   DisposeMusicPlayer(player);
 }
 
+- (void)startCustomMusicSequence
+{
+  OSStatus result = noErr;
+  
+  AUNode samplerNode;
+  result = AUGraphGetIndNode(processingGraph, 0, &samplerNode);
+  NSAssert (result == noErr, @"Unable to sampler node. Error code: %d '%.4s'", (int) result, (const char *)&result);
+  
+  // create an empty sequence
+  MusicSequence sequence;
+  NewMusicSequence(&sequence);
+  
+  // add tracks to sequence
+  MusicTrack track;
+  MusicSequenceNewTrack(sequence, &track);
+  
+  // add events to tracks
+
+  // target tracks to graph nodes or midi endpoints
+  MusicTrackSetDestNode(track, samplerNode);
+  
+  // start the player
+  MusicPlayer player;
+  NewMusicPlayer(&player);
+  
+  MusicPlayerSetSequence(player, sequence);
+  MusicPlayerPreroll(player);
+  MusicPlayerStart(player);
+  
+  // get length of track so that we know how long to kill time for
+  MusicTimeStamp length;
+  UInt32 size = sizeof(length);
+  MusicSequenceGetIndTrack(sequence, 1, &track);
+  MusicTrackGetProperty(track, kSequenceTrackProperty_TrackLength, &length, &size);
+  NSLog(@"Track length in beats: %f", length);
+  
+  while(1)
+  {
+    usleep(3 * 1000 * 1000);
+    MusicTimeStamp now = 0;
+    result = MusicPlayerGetTime(player, &now);
+    NSAssert (result == noErr, @"Unable to get the music player time. Error code: %d '%.4s'", (int) result, (const char *)&result);
+    NSLog(@"Current time: %6.2f beats", now);
+    
+    Float32 load;
+    result = AUGraphGetCPULoad(processingGraph, &load);
+    NSAssert (result == noErr, @"Unable to get cpu load. Error code: %d '%.4s'", (int) result, (const char *)&result);
+    NSLog(@"CPU Load: %.2f", load * 100.0);
+    
+    if(now >= length)
+    {
+      break;
+    }
+  }
+  
+  // stop the player and dispose of objects
+  MusicPlayerStop(player);
+  DisposeMusicSequence(sequence);
+  DisposeMusicPlayer(player);
+}
+
 @end
