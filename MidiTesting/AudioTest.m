@@ -33,7 +33,7 @@
   
   [self createAUGraph];
   [self startAUGraph];
-  [self startMusicSequence];
+  [self startCustomMusicSequence];
 }
 
 - (void)createAUGraph
@@ -155,10 +155,54 @@
   NewMusicSequence(&sequence);
   
   // add tracks to sequence
-  MusicTrack track;
+  MusicTrack track, tempoTrack;
   MusicSequenceNewTrack(sequence, &track);
   
+  // change the tempo to medium
+  MusicSequenceGetTempoTrack(sequence, &tempoTrack);
+  MusicTrackNewExtendedTempoEvent(tempoTrack, 0, 80.0);
+  
   // add events to tracks
+  
+  // pattern 1, 1 2 3 4
+  MusicTimeStamp timestamp1 = 0.0;
+  MIDINoteMessage noteMessage1 = { 0, 60, 100, 0, 1.0 };  // c
+  MIDINoteMessage noteMessage2 = { 0, 60, 100, 0, 1.0 };  // c
+  MIDINoteMessage noteMessage3 = { 0, 66, 100, 0, 1.0 };  // f
+  MIDINoteMessage noteMessage4 = { 0, 66, 100, 0, 1.0 };  // f
+  
+  MusicTrackNewMIDINoteEvent(track, timestamp1, &noteMessage1);
+  MusicTrackNewMIDINoteEvent(track, ++timestamp1, &noteMessage2);
+  MusicTrackNewMIDINoteEvent(track, ++timestamp1, &noteMessage3);
+  MusicTrackNewMIDINoteEvent(track, ++timestamp1, &noteMessage4);
+  
+  // pattern 2: 1& 2& 3& 4&
+  MIDINoteMessage noteMessage5 = { 0, 60, 100, 0, 0.5 };  // c
+  MIDINoteMessage noteMessage6 = { 0, 60, 100, 0, 0.5 };
+  MIDINoteMessage noteMessage7 = { 0, 60, 100, 0, 0.5 };
+  MIDINoteMessage noteMessage8 = { 0, 60, 100, 0, 0.5 };
+  MIDINoteMessage noteMessage9 = { 0, 66, 100, 0, 0.5 };  // f
+  MIDINoteMessage noteMessage10 = { 0, 66, 100, 0, 0.5 };
+  MIDINoteMessage noteMessage11 = { 0, 66, 100, 0, 0.5 };
+  MIDINoteMessage noteMessage12 = { 0, 66, 100, 0, 0.5 };
+  
+  timestamp1 += 1.0;
+  MusicTrackNewMIDINoteEvent(track, timestamp1, &noteMessage5);
+  timestamp1 += 0.5;
+  MusicTrackNewMIDINoteEvent(track, timestamp1, &noteMessage6);
+  timestamp1 += 0.5;
+  MusicTrackNewMIDINoteEvent(track, timestamp1, &noteMessage7);
+  timestamp1 += 0.5;
+  MusicTrackNewMIDINoteEvent(track, timestamp1, &noteMessage8);
+  timestamp1 += 0.5;
+  MusicTrackNewMIDINoteEvent(track, timestamp1, &noteMessage9);
+  timestamp1 += 0.5;
+  MusicTrackNewMIDINoteEvent(track, timestamp1, &noteMessage10);
+  timestamp1 += 0.5;
+  MusicTrackNewMIDINoteEvent(track, timestamp1, &noteMessage11);
+  timestamp1 += 0.5;
+  MusicTrackNewMIDINoteEvent(track, timestamp1, &noteMessage12);
+  
 
   // target tracks to graph nodes or midi endpoints
   MusicTrackSetDestNode(track, samplerNode);
