@@ -12,7 +12,6 @@
 
 @synthesize progression = _progression;
 @synthesize strumPatternNumber = _strumPatternNumber;
-@synthesize barNumber = _barNumber;
 
 - (id)initWithProgression:(Progression *)progression strumPatternNumber:(int)strumPatternNumber
 {
@@ -21,15 +20,13 @@
   {
     [self setProgression:progression];
     [self setStrumPatternNumber:strumPatternNumber];
-    [self setBarNumber:-1];
   }
   return self;
 }
 
 - (NSString *)description
 {
-  NSString *desc = [NSString stringWithFormat:@"Progression: %@, StrumPattern #%i, BarNumber: %i", self.progression, self.strumPatternNumber, self.barNumber];
-  
+  NSString *desc = [NSString stringWithFormat:@"Progression: %@, StrumPattern #%i", self.progression, self.strumPatternNumber];
   return desc;
 }
 

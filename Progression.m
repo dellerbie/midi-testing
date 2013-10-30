@@ -25,7 +25,12 @@
 
 - (NSString *)description
 {
-  return [NSString stringWithFormat:@"chords [%@]", self.chords];
+  NSString *chords = @"";
+  for(NSString *chord in self.chords)
+  {
+    chords = [chords stringByAppendingString:chord];
+  }
+  return [NSString stringWithFormat:@"[%@]", chords];
 }
 
 @end

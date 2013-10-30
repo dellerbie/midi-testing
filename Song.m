@@ -48,10 +48,16 @@
 - (NSString *)description
 {
   NSString *desc = @"";
+  
+  desc = [desc stringByAppendingString:[NSString stringWithFormat:@"%i Bars\n", [[self bars] count]]];
+
+  int barNum = 1;
   for(Bar *bar in self.bars)
   {
-    [desc stringByAppendingString:[bar description]];
-    [desc stringByAppendingString:@"\n"];
+    desc = [desc stringByAppendingString:[NSString stringWithFormat:@"Bar #%i => ", barNum]];
+    desc = [desc stringByAppendingString:[bar description]];
+    desc = [desc stringByAppendingString:@"\n"];
+    barNum++;
   }
   return desc;
 }
@@ -59,7 +65,6 @@
 - (Bar *)appendBar
 {
   Bar *bar = [[Bar alloc] init];
-  [bar setBarNumber:[[self bars] count] + 1];
   [[self bars] addObject:bar];
   return bar;
 }
@@ -67,9 +72,13 @@
 - (Bar *)addBarAtBarNumber:(int)barNumber
 {
   Bar *bar = [[Bar alloc] init];
-  [bar setBarNumber:barNumber];
   [[self bars] insertObject:bar atIndex:barNumber - 1];
   return bar;
+}
+
+- (void)removeBar:(Bar *)bar
+{
+  [[self bars] removeObject:bar];
 }
 
 - (void)addProgession:(Progression *)progression withStrumPattern:(int)strumPatternNumber toTrack:(MusicTrack)track atBar:(Bar *)bar
@@ -93,7 +102,7 @@
     
     currentBeat = timestamp;
     
-    float beatNumber = [Song beatNumberForBarNumber:[bar barNumber]];
+    float beatNumber = [Song beatNumberForBarNumber: [[self bars] indexOfObject: bar] + 1];
     MusicTimeStamp realTimeStamp = beatNumber + (timestamp - 1.0);
     NSLog(@"Note: %i, Duration: %f, timestamp: %f", currentNote, strumEvent.duration, realTimeStamp);
     

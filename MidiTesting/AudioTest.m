@@ -166,6 +166,12 @@
   Bar *bar = [song appendBar];
   Progression *progression = [[Progression alloc] initWithChords: @[@"C", @"C", @"F", @"F"]];
   [song addProgession:progression withStrumPattern:1 toTrack:track atBar:bar];
+  
+  Bar *bar2 = [song appendBar];
+  Progression *progression2 = [[Progression alloc] initWithChords: @[@"G", @"C", @"F", @"G"]];
+  [song addProgession:progression2 withStrumPattern:1 toTrack:track atBar:bar2];
+  
+  NSLog(@"\nSong info: %@", song);
 
   // target tracks to graph nodes or midi endpoints
   MusicTrackSetDestNode(track, samplerNode);

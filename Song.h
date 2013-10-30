@@ -15,6 +15,7 @@
 
 - (Bar *)appendBar;
 - (Bar *)addBarAtBarNumber:(int)barNumber;
+- (void)removeBar:(Bar *)bar;
 - (void)addProgession:(Progression *)progression withStrumPattern:(int)strumPatternNumber toTrack:(MusicTrack) track atBar:(Bar *)bar;
 
 @end
