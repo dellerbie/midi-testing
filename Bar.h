@@ -14,6 +14,7 @@
 
 @property (nonatomic, strong) Progression *progression;
 @property (nonatomic, strong) StrumPattern *strumPattern;
+@property (nonatomic) int barNumber;
 
 -(id) initWithProgression:(Progression *)progression strumPattern:(StrumPattern *)strumPattern;
 

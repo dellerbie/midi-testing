@@ -165,7 +165,8 @@
   
   Song *song = [[Song alloc] init];
   Progression *progression = [[Progression alloc] initWithChords: @[@"C", @"C", @"F", @"F"]];
-  [song addProgession:progression withStrumPattern:1 toTrack:track atBarNumber:1];
+  Bar *bar = [song appendBar];
+  [song addProgession:progression withStrumPattern:1 toTrack:track atBar:bar];
   
 
   // target tracks to graph nodes or midi endpoints

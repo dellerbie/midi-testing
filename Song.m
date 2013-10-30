@@ -7,9 +7,14 @@
 //
 
 #import "Song.h"
-#import "StrumEventsFactory.h"
 #import "Bar.h"
 #import <tgmath.h>
+
+@interface Song()
+
+@property (nonatomic, strong) NSMutableArray *bars;
+
+@end
 
 @implementation Song
 
@@ -40,7 +45,24 @@
   return self;
 }
 
-- (void)addProgession:(Progression *)progression withStrumPattern:(int)strumPatternNumber toTrack:(MusicTrack)track atBarNumber:(int)barNumber
+
+- (Bar *)appendBar
+{
+  Bar *bar = [[Bar alloc] init];
+  [bar setBarNumber:[[self bars] count] + 1];
+  [[self bars] addObject:bar];
+  return bar;
+}
+
+- (Bar *)addBarAtBarNumber:(int)barNumber
+{
+  Bar *bar = [[Bar alloc] init];
+  [bar setBarNumber:barNumber];
+  [[self bars] insertObject:bar atIndex:barNumber - 1];
+  return bar;
+}
+
+- (void)addProgession:(Progression *)progression withStrumPattern:(int)strumPatternNumber toTrack:(MusicTrack)track atBar:(Bar *)bar
 {
   NSArray *chords = [progression chords];
   NSArray *strumEvents = [StrumPattern strumEventsForPatternNumber:strumPatternNumber];
@@ -61,7 +83,7 @@
     
     currentBeat = timestamp;
     
-    float beatNumber = [Song beatNumberForBarNumber:barNumber];
+    float beatNumber = [Song beatNumberForBarNumber:[bar barNumber]];
     MusicTimeStamp realTimeStamp = beatNumber + (timestamp - 1.0);
     NSLog(@"Note: %i, Duration: %f, timestamp: %f", currentNote, strumEvent.duration, realTimeStamp);
     

@@ -12,6 +12,7 @@
 
 @synthesize progression = _progression;
 @synthesize strumPattern = _strumPattern;
+@synthesize barNumber = _barNumber;
 
 -(id) initWithProgression:(Progression *)progression strumPattern:(StrumPattern *)strumPattern
 {
@@ -20,6 +21,7 @@
   {
     [self setProgression:progression];
     [self setStrumPattern:strumPattern];
+    [self setBarNumber:-1];
   }
   return self;
 }

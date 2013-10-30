@@ -9,11 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "Progression.h"
 #import "StrumPattern.h"
+#import "Bar.h"
 
 @interface Song : NSObject
 
-@property (nonatomic, strong) NSArray *bars;
-
-- (void)addProgession:(Progression *)progression withStrumPattern:(int)strumPatternNumber toTrack:(MusicTrack) track atBarNumber:(int)barNumber;
+- (Bar *)appendBar;
+- (Bar *)addBarAtBarNumber:(int)barNumber;
+- (void)addProgession:(Progression *)progression withStrumPattern:(int)strumPatternNumber toTrack:(MusicTrack) track atBar:(Bar *)bar;
 
 @end
