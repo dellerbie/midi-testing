@@ -23,4 +23,9 @@
   return self;
 }
 
+- (NSString *)description
+{
+  return [NSString stringWithFormat:@"chords [%@]", self.chords];
+}
+
 @end

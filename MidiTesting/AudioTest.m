@@ -162,12 +162,10 @@
   MusicTrackNewExtendedTempoEvent(tempoTrack, 0, 80.0);
   
   // add events to tracks
-  
   Song *song = [[Song alloc] init];
-  Progression *progression = [[Progression alloc] initWithChords: @[@"C", @"C", @"F", @"F"]];
   Bar *bar = [song appendBar];
+  Progression *progression = [[Progression alloc] initWithChords: @[@"C", @"C", @"F", @"F"]];
   [song addProgession:progression withStrumPattern:1 toTrack:track atBar:bar];
-  
 
   // target tracks to graph nodes or midi endpoints
   MusicTrackSetDestNode(track, samplerNode);

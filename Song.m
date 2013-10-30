@@ -45,6 +45,16 @@
   return self;
 }
 
+- (NSString *)description
+{
+  NSString *desc = @"";
+  for(Bar *bar in self.bars)
+  {
+    [desc stringByAppendingString:[bar description]];
+    [desc stringByAppendingString:@"\n"];
+  }
+  return desc;
+}
 
 - (Bar *)appendBar
 {
@@ -91,13 +101,8 @@
     MusicTrackNewMIDINoteEvent(track, realTimeStamp, &noteMessage);
   }
   
-//  Bar *bar = [[Bar alloc] init];
-//  [bar setProgression:progression];
-//  Class strumPattern = NSClassFromString([NSString stringWithFormat:@"StrumPattern%i", strumPatternNumber]);
-//  [bar setStrumPattern:[[strumPattern alloc] init]];
-//  
-//  NSMutableArray *bars = (NSMutableArray *)[self bars];
-//  [bars addObject:bar];
+  [bar setStrumPatternNumber:strumPatternNumber];
+  [bar setProgression:progression];
 }
 
 @end

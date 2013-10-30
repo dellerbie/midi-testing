@@ -13,9 +13,9 @@
 @interface Bar : NSObject
 
 @property (nonatomic, strong) Progression *progression;
-@property (nonatomic, strong) StrumPattern *strumPattern;
+@property (nonatomic) int strumPatternNumber;
 @property (nonatomic) int barNumber;
 
--(id) initWithProgression:(Progression *)progression strumPattern:(StrumPattern *)strumPattern;
+-(id) initWithProgression:(Progression *)progression strumPatternNumber:(int)strumPatternNumber;
 
 @end
