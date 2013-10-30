@@ -43,7 +43,7 @@
 - (void)addProgession:(Progression *)progression withStrumPattern:(int)strumPatternNumber toTrack:(MusicTrack)track atBarNumber:(int)barNumber
 {
   NSArray *chords = [progression chords];
-  NSArray *strumEvents = [StrumEventsFactory strumEventsForPatternNumber:strumPatternNumber];
+  NSArray *strumEvents = [StrumPattern strumEventsForPatternNumber:strumPatternNumber];
   
   int currentNote = [[[Song notes] objectForKey:[chords objectAtIndex:0]] integerValue];
   MusicTimeStamp currentBeat = 1.0;

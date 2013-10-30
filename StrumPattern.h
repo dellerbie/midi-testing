@@ -10,6 +10,6 @@
 
 @interface StrumPattern : NSObject
 
-+ (NSArray *)strumEvents;
++ (NSArray *)strumEventsForPatternNumber:(int)patternNumber;
 
 @end
