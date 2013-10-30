@@ -13,9 +13,12 @@
 
 @interface Song : NSObject
 
+@property (nonatomic) MusicTrack track;
+
 - (Bar *)appendBar;
 - (Bar *)addBarAtBarNumber:(int)barNumber;
 - (void)removeBar:(Bar *)bar;
-- (void)addProgession:(Progression *)progression withStrumPattern:(int)strumPatternNumber toTrack:(MusicTrack) track atBar:(Bar *)bar;
+- (void)moveBar:(Bar *)bar toBarNumber:(int)barNumber;
+- (void)addProgession:(Progression *)progression withStrumPattern:(int)strumPatternNumber atBar:(Bar *)bar;
 
 @end

@@ -71,6 +71,8 @@
 
 - (Bar *)addBarAtBarNumber:(int)barNumber
 {
+  // TODO: shift MusicTrack events
+  // SEE: MusicTrackMoveEvents
   Bar *bar = [[Bar alloc] init];
   [[self bars] insertObject:bar atIndex:barNumber - 1];
   return bar;
@@ -78,10 +80,18 @@
 
 - (void)removeBar:(Bar *)bar
 {
+  // TODO: clear events for bar
+  // SEE: MusicTrackCut
   [[self bars] removeObject:bar];
 }
 
-- (void)addProgession:(Progression *)progression withStrumPattern:(int)strumPatternNumber toTrack:(MusicTrack)track atBar:(Bar *)bar
+- (void)moveBar:(Bar *)bar toBarNumber:(int)barNumber
+{
+  // TODO: shift MusicTrack events
+  // SEE: MusicTrackMoveEvents
+}
+
+- (void)addProgession:(Progression *)progression withStrumPattern:(int)strumPatternNumber atBar:(Bar *)bar
 {
   NSArray *chords = [progression chords];
   NSArray *strumEvents = [StrumPattern strumEventsForPatternNumber:strumPatternNumber];
@@ -107,7 +117,10 @@
     NSLog(@"Note: %i, Duration: %f, timestamp: %f", currentNote, strumEvent.duration, realTimeStamp);
     
     MIDINoteMessage noteMessage = { 0, currentNote, 100, 0, strumEvent.duration };
-    MusicTrackNewMIDINoteEvent(track, realTimeStamp, &noteMessage);
+    
+    // TODO: Might have to remove the previous events first
+    // SEE: MusicTrackClear
+    MusicTrackNewMIDINoteEvent(self.track, realTimeStamp, &noteMessage);
   }
   
   [bar setStrumPatternNumber:strumPatternNumber];
