@@ -48,12 +48,12 @@
 		CE1568E41819A08A0044F9CC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CE1568E61819A08A0044F9CC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CE1568E81819A08A0044F9CC /* MidiTesting-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MidiTesting-Prefix.pch"; sourceTree = "<group>"; };
-		CE1568E91819A08A0044F9CC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		CE1568EA1819A08A0044F9CC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		CE1568E91819A08A0044F9CC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = MidiTesting/AppDelegate.h; sourceTree = "<group>"; };
+		CE1568EA1819A08A0044F9CC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = MidiTesting/AppDelegate.m; sourceTree = "<group>"; };
 		CE1568ED1819A08A0044F9CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		CE1568EF1819A08A0044F9CC /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		CE1568F01819A08A0044F9CC /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		CE1568F21819A08A0044F9CC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		CE1568EF1819A08A0044F9CC /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = MidiTesting/ViewController.h; sourceTree = "<group>"; };
+		CE1568F01819A08A0044F9CC /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = MidiTesting/ViewController.m; sourceTree = "<group>"; };
+		CE1568F21819A08A0044F9CC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = MidiTesting/Images.xcassets; sourceTree = "<group>"; };
 		CE1568F81819A08A0044F9CC /* MidiTestingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MidiTestingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE1568F91819A08A0044F9CC /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		CE1569011819A08A0044F9CC /* MidiTestingTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MidiTestingTests-Info.plist"; sourceTree = "<group>"; };
@@ -62,8 +62,8 @@
 		CE15690F1819A0DE0044F9CC /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		CE1569101819A0DE0044F9CC /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		CE1569111819A0DE0044F9CC /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
-		CE1569151819A11F0044F9CC /* AudioTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioTest.h; sourceTree = "<group>"; };
-		CE1569161819A11F0044F9CC /* AudioTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioTest.m; sourceTree = "<group>"; };
+		CE1569151819A11F0044F9CC /* AudioTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioTest.h; path = MidiTesting/AudioTest.h; sourceTree = "<group>"; };
+		CE1569161819A11F0044F9CC /* AudioTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AudioTest.m; path = MidiTesting/AudioTest.m; sourceTree = "<group>"; };
 		CE1569191819A13B0044F9CC /* Gorts_Filters.SF2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Gorts_Filters.SF2; sourceTree = "<group>"; };
 		CE15691A1819A13B0044F9CC /* simpletest.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = simpletest.mid; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -98,8 +98,11 @@
 		CE1568CE1819A08A0044F9CC = {
 			isa = PBXGroup;
 			children = (
+				CE1568E91819A08A0044F9CC /* AppDelegate.h */,
+				CE1568EA1819A08A0044F9CC /* AppDelegate.m */,
+				CEB5E23A182169FC00763223 /* Models */,
+				CEB5E2391821698500763223 /* Controllers */,
 				CE1569181819A12D0044F9CC /* Resources */,
-				CE1568E01819A08A0044F9CC /* MidiTesting */,
 				CE1568FF1819A08A0044F9CC /* MidiTestingTests */,
 				CE1568D91819A08A0044F9CC /* Frameworks */,
 				CE1568D81819A08A0044F9CC /* Products */,
@@ -129,22 +132,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		CE1568E01819A08A0044F9CC /* MidiTesting */ = {
-			isa = PBXGroup;
-			children = (
-				CE1568E91819A08A0044F9CC /* AppDelegate.h */,
-				CE1568EA1819A08A0044F9CC /* AppDelegate.m */,
-				CE1568EC1819A08A0044F9CC /* Main.storyboard */,
-				CE1568EF1819A08A0044F9CC /* ViewController.h */,
-				CE1568F01819A08A0044F9CC /* ViewController.m */,
-				CE1569151819A11F0044F9CC /* AudioTest.h */,
-				CE1569161819A11F0044F9CC /* AudioTest.m */,
-				CE1568F21819A08A0044F9CC /* Images.xcassets */,
-				CE1568E11819A08A0044F9CC /* Supporting Files */,
-			);
-			path = MidiTesting;
-			sourceTree = "<group>";
-		};
 		CE1568E11819A08A0044F9CC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -154,6 +141,7 @@
 				CE1568E81819A08A0044F9CC /* MidiTesting-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			path = MidiTesting;
 			sourceTree = "<group>";
 		};
 		CE1568FF1819A08A0044F9CC /* MidiTestingTests */ = {
@@ -179,8 +167,29 @@
 			children = (
 				CE1569191819A13B0044F9CC /* Gorts_Filters.SF2 */,
 				CE15691A1819A13B0044F9CC /* simpletest.mid */,
+				CE1568F21819A08A0044F9CC /* Images.xcassets */,
+				CE1568EC1819A08A0044F9CC /* Main.storyboard */,
+				CE1568E11819A08A0044F9CC /* Supporting Files */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		CEB5E2391821698500763223 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CE1568EF1819A08A0044F9CC /* ViewController.h */,
+				CE1568F01819A08A0044F9CC /* ViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		CEB5E23A182169FC00763223 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CE1569151819A11F0044F9CC /* AudioTest.h */,
+				CE1569161819A11F0044F9CC /* AudioTest.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -322,6 +331,7 @@
 				CE1568ED1819A08A0044F9CC /* Base */,
 			);
 			name = Main.storyboard;
+			path = MidiTesting;
 			sourceTree = "<group>";
 		};
 		CE1569021819A08A0044F9CC /* InfoPlist.strings */ = {
@@ -494,6 +504,7 @@
 				CE15690B1819A08A0044F9CC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CE15690C1819A08A0044F9CC /* Build configuration list for PBXNativeTarget "MidiTestingTests" */ = {
 			isa = XCConfigurationList;
@@ -502,6 +513,7 @@
 				CE15690E1819A08A0044F9CC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

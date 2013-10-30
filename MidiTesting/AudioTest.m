@@ -28,9 +28,7 @@
 }
 
 - (void) midiTest
-{
-  OSStatus result = noErr;
-  
+{  
   [self createAUGraph];
   [self startAUGraph];
   [self startCustomMusicSequence];
