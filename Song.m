@@ -8,6 +8,7 @@
 
 #import "Song.h"
 #import "StrumEventsFactory.h"
+#import "Bar.h"
 #import <tgmath.h>
 
 @implementation Song
@@ -29,6 +30,16 @@
   return (4 * barNumber) - 3;
 }
 
+- (id)init
+{
+  self = [super init];
+  if(self)
+  {
+    [self setBars:[[NSMutableArray alloc] init]];
+  }
+  return self;
+}
+
 - (void)addProgession:(Progression *)progression withStrumPattern:(int)strumPatternNumber toTrack:(MusicTrack)track atBarNumber:(int)barNumber
 {
   NSArray *chords = [progression chords];
@@ -43,11 +54,12 @@
     [value getValue:&strumEvent];
     
     MusicTimeStamp timestamp = strumEvent.timestamp;
-    if(fmod(timestamp, 1.0) == 0.0 && timestamp != currentBeat)
+    if(floor(timestamp) != currentBeat)
     {
-      currentBeat = timestamp;
-      currentNote = currentNote = [[[Song notes] objectForKey:[chords objectAtIndex:floor(currentBeat - 1.0)]] integerValue];
+      currentNote = [[[Song notes] objectForKey:[chords objectAtIndex:floor(timestamp - 1.0)]] integerValue];
     }
+    
+    currentBeat = timestamp;
     
     float beatNumber = [Song beatNumberForBarNumber:barNumber];
     MusicTimeStamp realTimeStamp = beatNumber + (timestamp - 1.0);
@@ -56,6 +68,14 @@
     MIDINoteMessage noteMessage = { 0, currentNote, 100, 0, strumEvent.duration };
     MusicTrackNewMIDINoteEvent(track, realTimeStamp, &noteMessage);
   }
+  
+//  Bar *bar = [[Bar alloc] init];
+//  [bar setProgression:progression];
+//  Class strumPattern = NSClassFromString([NSString stringWithFormat:@"StrumPattern%i", strumPatternNumber]);
+//  [bar setStrumPattern:[[strumPattern alloc] init]];
+//  
+//  NSMutableArray *bars = (NSMutableArray *)[self bars];
+//  [bars addObject:bar];
 }
 
 @end
