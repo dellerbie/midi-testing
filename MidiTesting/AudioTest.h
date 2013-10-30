@@ -6,8 +6,6 @@
 //  Copyright (c) 2013 dellerbie. All rights reserved.
 //
 
-#import <AudioToolbox/MusicPlayer.h>
-
 @interface AudioTest : NSObject
 
 +(id) audioTest;

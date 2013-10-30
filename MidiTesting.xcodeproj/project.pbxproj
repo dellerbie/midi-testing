@@ -27,6 +27,12 @@
 		CE1569171819A11F0044F9CC /* AudioTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1569161819A11F0044F9CC /* AudioTest.m */; };
 		CE15691B1819A13B0044F9CC /* Gorts_Filters.SF2 in Resources */ = {isa = PBXBuildFile; fileRef = CE1569191819A13B0044F9CC /* Gorts_Filters.SF2 */; };
 		CE15691C1819A13B0044F9CC /* simpletest.mid in Resources */ = {isa = PBXBuildFile; fileRef = CE15691A1819A13B0044F9CC /* simpletest.mid */; };
+		CEB5E23D18216AB600763223 /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB5E23C18216AB600763223 /* Song.m */; };
+		CEB5E24018216B4200763223 /* Bar.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB5E23F18216B4200763223 /* Bar.m */; };
+		CEB5E24318216BF700763223 /* Progression.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB5E24218216BF700763223 /* Progression.m */; };
+		CEB5E24618216C1B00763223 /* StrumPattern.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB5E24518216C1B00763223 /* StrumPattern.m */; };
+		CEB5E24D1821709E00763223 /* StrumPattern1.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB5E24C1821709E00763223 /* StrumPattern1.m */; };
+		CEB5E25018217A0700763223 /* StrumEventsFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB5E24F18217A0700763223 /* StrumEventsFactory.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +72,18 @@
 		CE1569161819A11F0044F9CC /* AudioTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AudioTest.m; path = MidiTesting/AudioTest.m; sourceTree = "<group>"; };
 		CE1569191819A13B0044F9CC /* Gorts_Filters.SF2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Gorts_Filters.SF2; sourceTree = "<group>"; };
 		CE15691A1819A13B0044F9CC /* simpletest.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = simpletest.mid; sourceTree = "<group>"; };
+		CEB5E23B18216AB600763223 /* Song.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Song.h; sourceTree = "<group>"; };
+		CEB5E23C18216AB600763223 /* Song.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Song.m; sourceTree = "<group>"; };
+		CEB5E23E18216B4200763223 /* Bar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bar.h; sourceTree = "<group>"; };
+		CEB5E23F18216B4200763223 /* Bar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bar.m; sourceTree = "<group>"; };
+		CEB5E24118216BF700763223 /* Progression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Progression.h; sourceTree = "<group>"; };
+		CEB5E24218216BF700763223 /* Progression.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Progression.m; sourceTree = "<group>"; };
+		CEB5E24418216C1B00763223 /* StrumPattern.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StrumPattern.h; sourceTree = "<group>"; };
+		CEB5E24518216C1B00763223 /* StrumPattern.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StrumPattern.m; sourceTree = "<group>"; };
+		CEB5E24B1821709E00763223 /* StrumPattern1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StrumPattern1.h; sourceTree = "<group>"; };
+		CEB5E24C1821709E00763223 /* StrumPattern1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StrumPattern1.m; sourceTree = "<group>"; };
+		CEB5E24E18217A0700763223 /* StrumEventsFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StrumEventsFactory.h; sourceTree = "<group>"; };
+		CEB5E24F18217A0700763223 /* StrumEventsFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StrumEventsFactory.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,10 +204,30 @@
 		CEB5E23A182169FC00763223 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				CEB5E24A1821705600763223 /* StrumPatterns */,
 				CE1569151819A11F0044F9CC /* AudioTest.h */,
 				CE1569161819A11F0044F9CC /* AudioTest.m */,
+				CEB5E23B18216AB600763223 /* Song.h */,
+				CEB5E23C18216AB600763223 /* Song.m */,
+				CEB5E23E18216B4200763223 /* Bar.h */,
+				CEB5E23F18216B4200763223 /* Bar.m */,
+				CEB5E24118216BF700763223 /* Progression.h */,
+				CEB5E24218216BF700763223 /* Progression.m */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		CEB5E24A1821705600763223 /* StrumPatterns */ = {
+			isa = PBXGroup;
+			children = (
+				CEB5E24418216C1B00763223 /* StrumPattern.h */,
+				CEB5E24518216C1B00763223 /* StrumPattern.m */,
+				CEB5E24B1821709E00763223 /* StrumPattern1.h */,
+				CEB5E24C1821709E00763223 /* StrumPattern1.m */,
+				CEB5E24E18217A0700763223 /* StrumEventsFactory.h */,
+				CEB5E24F18217A0700763223 /* StrumEventsFactory.m */,
+			);
+			name = StrumPatterns;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -291,10 +329,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEB5E23D18216AB600763223 /* Song.m in Sources */,
 				CE1569171819A11F0044F9CC /* AudioTest.m in Sources */,
+				CEB5E24D1821709E00763223 /* StrumPattern1.m in Sources */,
+				CEB5E24618216C1B00763223 /* StrumPattern.m in Sources */,
 				CE1568F11819A08A0044F9CC /* ViewController.m in Sources */,
+				CEB5E24018216B4200763223 /* Bar.m in Sources */,
+				CEB5E24318216BF700763223 /* Progression.m in Sources */,
 				CE1568EB1819A08A0044F9CC /* AppDelegate.m in Sources */,
 				CE1568E71819A08A0044F9CC /* main.m in Sources */,
+				CEB5E25018217A0700763223 /* StrumEventsFactory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

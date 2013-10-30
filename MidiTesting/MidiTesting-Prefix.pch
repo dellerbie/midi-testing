@@ -5,6 +5,7 @@
 //
 
 #import <Availability.h>
+#import <AudioToolbox/MusicPlayer.h>
 
 #ifndef __IPHONE_5_0
 #warning "This project uses features only available in iOS SDK 5.0 and later."
@@ -14,3 +15,16 @@
   #import <UIKit/UIKit.h>
   #import <Foundation/Foundation.h>
 #endif
+
+typedef enum
+{
+  kStrumDirection_Down = 0,
+  kStrumDirection_Up = 1
+} StrumDirection;
+
+typedef struct
+{
+  MusicTimeStamp timestamp;
+  Float32 duration;
+  StrumDirection strumDirection;
+} StrumEvent;
