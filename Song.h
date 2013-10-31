@@ -14,11 +14,14 @@
 @interface Song : NSObject
 
 @property (nonatomic) MusicTrack track;
+@property (nonatomic) MusicSequence sequence;
+
++ (MusicTimeStamp)beatNumberForBarNumber:(int)barNumber;
 
 - (Bar *)appendBar;
 - (Bar *)addBarAtBarNumber:(int)barNumber;
 - (void)removeBar:(Bar *)bar;
 - (void)moveBar:(Bar *)bar toBarNumber:(int)barNumber;
-- (void)addProgession:(Progression *)progression withStrumPattern:(int)strumPatternNumber atBar:(Bar *)bar;
+- (void)addProgession:(Progression *)progression withStrumPattern:(int)strumPatternNumber toBar:(Bar *)bar;
 
 @end

@@ -114,6 +114,9 @@
   MusicTrackGetProperty(track, kSequenceTrackProperty_TrackLength, &length, &size);
   NSLog(@"Track length in beats: %f", length);
   
+  // print out all of the events in the track
+  [self logMusicEventsForTrack:track];
+  
   OSStatus result = noErr;
   
   while(1)
@@ -164,15 +167,20 @@
   // add events to tracks
   Song *song = [[Song alloc] init];
   [song setTrack:track];
+  [song setSequence:sequence];
+  
   Bar *bar = [song appendBar];
   Progression *progression = [[Progression alloc] initWithChords: @[@"C", @"C", @"F", @"F"]];
-  [song addProgession:progression withStrumPattern:1 atBar:bar];
+  [song addProgession:progression withStrumPattern:1 toBar:bar];
   
   Bar *bar2 = [song appendBar];
   Progression *progression2 = [[Progression alloc] initWithChords: @[@"G", @"C", @"F", @"G"]];
-  [song addProgession:progression2 withStrumPattern:1 atBar:bar2];
+  [song addProgession:progression2 withStrumPattern:1 toBar:bar2];
+  
+  [song moveBar:bar2 toBarNumber:1];
   
   NSLog(@"\nSong info: %@", song);
+  [self logMusicEventsForTrack:track];
 
   // target tracks to graph nodes or midi endpoints
   MusicTrackSetDestNode(track, samplerNode);
@@ -215,6 +223,33 @@
   MusicPlayerStop(player);
   DisposeMusicSequence(sequence);
   DisposeMusicPlayer(player);
+}
+
+- (void)logMusicEventsForTrack:(MusicTrack) track
+{
+  MusicEventIterator eventIterator;
+  NewMusicEventIterator(track, &eventIterator);
+  Boolean hasEvent = false;
+  MusicEventIteratorHasCurrentEvent(eventIterator, &hasEvent);
+  while(hasEvent)
+  {
+    MusicTimeStamp eventTime;
+    MusicEventType eventType = 0;
+    const void *eventData = NULL;
+    UInt32 eventDataSize;
+    
+    MusicEventIteratorGetEventInfo(eventIterator, &eventTime, &eventType, &eventData, &eventDataSize);
+    NSLog(@"Event %f: Type = %lu, Data = %p, Size = %lu", eventTime, eventType, eventData, eventDataSize);
+    
+    if(eventType == kMusicEventType_MIDINoteMessage)
+    {
+      MIDINoteMessage *message = (MIDINoteMessage *)eventData;
+      NSLog(@"MIDINoteMessage. channel: %i, note: %i, velocity: %i, release velocity: %i, duration: %f", message->channel, message->note, message->velocity, message->releaseVelocity, message->duration);
+    }
+    
+    MusicEventIteratorNextEvent(eventIterator);
+    MusicEventIteratorHasCurrentEvent(eventIterator, &hasEvent);
+  }
 }
 
 @end

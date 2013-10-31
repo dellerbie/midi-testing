@@ -30,7 +30,7 @@
 
 // gets the first beat number for the given barNumber
 // in 4/4 time
-+ (int)beatNumberForBarNumber:(int) barNumber
++ (MusicTimeStamp)beatNumberForBarNumber:(int) barNumber
 {
   return (4 * barNumber) - 3;
 }
@@ -87,11 +87,39 @@
 
 - (void)moveBar:(Bar *)bar toBarNumber:(int)barNumber
 {
-  // TODO: shift MusicTrack events
-  // SEE: MusicTrackMoveEvents
+  int index = [[self bars] indexOfObject:bar];
+  NSLog(@"index of bar to move: %i", index);
+  
+  MusicTimeStamp beatToMoveFrom = [Song beatNumberForBarNumber:index+1];
+  MusicTimeStamp beatEndTime = beatToMoveFrom + 4;
+  MusicTimeStamp beatToMoveTo = [Song beatNumberForBarNumber:barNumber];
+  
+  NSLog(@"beatToMoveFrom: %f, beatEndTime: %f, beatToMoveTo: %f", beatToMoveFrom, beatEndTime, beatToMoveTo);
+
+  MusicTrack tmpTrack;
+  MusicSequenceNewTrack(self.sequence, &tmpTrack);
+  
+  // copy to tmpTracks first beat
+  OSStatus result = MusicTrackCopyInsert(self.track, beatToMoveFrom, beatEndTime, tmpTrack, 1.0);
+  NSAssert (result == noErr, @"Unable to move bar. Error code: %d '%.4s'", (int) result, (const char *)&result);
+  
+  // remove the events from the original track
+  result = MusicTrackCut(self.track, beatToMoveFrom, beatEndTime);
+  NSAssert (result == noErr, @"Unable to move bar. Error code: %d '%.4s'", (int) result, (const char *)&result);
+  
+  // copy the events from the tmpTrack back to the new position in the original track
+  result = MusicTrackCopyInsert(tmpTrack, 1.0, 5.0, self.track, beatToMoveTo);
+  NSAssert (result == noErr, @"Unable to move bar. Error code: %d '%.4s'", (int) result, (const char *)&result);
+  
+  // get rid of the tmpTrack
+  result = MusicSequenceDisposeTrack(self.sequence, tmpTrack);
+  NSAssert (result == noErr, @"Unable to move bar. Error code: %d '%.4s'", (int) result, (const char *)&result);
+  
+  // update the bar position in the data structure
+  [[self bars] exchangeObjectAtIndex:index withObjectAtIndex:barNumber - 1];
 }
 
-- (void)addProgession:(Progression *)progression withStrumPattern:(int)strumPatternNumber atBar:(Bar *)bar
+- (void)addProgession:(Progression *)progression withStrumPattern:(int)strumPatternNumber toBar:(Bar *)bar
 {
   NSArray *chords = [progression chords];
   NSArray *strumEvents = [StrumPattern strumEventsForPatternNumber:strumPatternNumber];
