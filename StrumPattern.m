@@ -39,6 +39,16 @@
   return rawTimeEvents;
 }
 
++ (NSArray *)pattern2
+{
+  static NSArray *rawTimeEvents = nil;
+  if(rawTimeEvents == nil)
+  {
+    rawTimeEvents = @[@[@1.0, @0.5, @1.0], @[@1.5, @0.5, @1.0], @[@2.0, @0.5, @1.0], @[@2.5, @0.5, @1.0], @[@3.0, @0.5, @1.0], @[@3.5, @0.5, @1.0], @[@4.0, @0.5, @1.0], @[@4.5, @0.5, @1.0]];
+  }
+  return rawTimeEvents;
+}
+
 
 
 @end

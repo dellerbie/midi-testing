@@ -166,17 +166,6 @@
   
   // add events to tracks
   Song *song = [[Song alloc] initWithSequence:sequence track:track file:@"Song"];
-  [song setKey:@"A"];
-  
-  
-//  Bar *bar = [song appendBar];
-//  Progression *progression = [[Progression alloc] initWithChords: @[@"I", @"I", @"IV", @"IV"]];
-//  [song addProgession:progression withStrumPattern:1 toBar:bar];
-//  
-//  Bar *bar2 = [song appendBar];
-//  Progression *progression2 = [[Progression alloc] initWithChords: @[@"V", @"I", @"IV", @"V"]];
-//  [song addProgession:progression2 withStrumPattern:1 toBar:bar2];
-  
   
   NSLog(@"\nSong info: %@", song);
   [self logMusicEventsForTrack:track];
