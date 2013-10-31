@@ -69,15 +69,6 @@
   return bar;
 }
 
-- (Bar *)addBarAtBarNumber:(int)barNumber
-{
-  // TODO: shift MusicTrack events
-  // SEE: MusicTrackMoveEvents
-  Bar *bar = [[Bar alloc] init];
-  [[self bars] insertObject:bar atIndex:barNumber - 1];
-  return bar;
-}
-
 - (void)removeBar:(Bar *)bar
 {
   // TODO: clear events for bar
@@ -97,26 +88,28 @@
   NSLog(@"beatToMoveFrom: %f, beatEndTime: %f, beatToMoveTo: %f", beatToMoveFrom, beatEndTime, beatToMoveTo);
 
   MusicTrack tmpTrack;
-  MusicSequenceNewTrack(self.sequence, &tmpTrack);
+  OSStatus result = MusicSequenceNewTrack(self.sequence, &tmpTrack);
+  NSAssert (result == noErr, @"Unable to create temporary track. Error code: %d '%.4s'", (int) result, (const char *)&result);
   
   // copy to tmpTracks first beat
-  OSStatus result = MusicTrackCopyInsert(self.track, beatToMoveFrom, beatEndTime, tmpTrack, 1.0);
-  NSAssert (result == noErr, @"Unable to move bar. Error code: %d '%.4s'", (int) result, (const char *)&result);
+  result = MusicTrackCopyInsert(self.track, beatToMoveFrom, beatEndTime, tmpTrack, 1.0);
+  NSAssert (result == noErr, @"Unable to copy insert track. Error code: %d '%.4s'", (int) result, (const char *)&result);
   
   // remove the events from the original track
   result = MusicTrackCut(self.track, beatToMoveFrom, beatEndTime);
-  NSAssert (result == noErr, @"Unable to move bar. Error code: %d '%.4s'", (int) result, (const char *)&result);
+  NSAssert (result == noErr, @"Unable to cut track. Error code: %d '%.4s'", (int) result, (const char *)&result);
   
   // copy the events from the tmpTrack back to the new position in the original track
   result = MusicTrackCopyInsert(tmpTrack, 1.0, 5.0, self.track, beatToMoveTo);
-  NSAssert (result == noErr, @"Unable to move bar. Error code: %d '%.4s'", (int) result, (const char *)&result);
+  NSAssert (result == noErr, @"Unable to copy insert track. Error code: %d '%.4s'", (int) result, (const char *)&result);
   
   // get rid of the tmpTrack
   result = MusicSequenceDisposeTrack(self.sequence, tmpTrack);
-  NSAssert (result == noErr, @"Unable to move bar. Error code: %d '%.4s'", (int) result, (const char *)&result);
+  NSAssert (result == noErr, @"Unable to dispose track. Error code: %d '%.4s'", (int) result, (const char *)&result);
   
   // update the bar position in the data structure
-  [[self bars] exchangeObjectAtIndex:index withObjectAtIndex:barNumber - 1];
+  [[self bars] removeObject:bar];
+  [[self bars] insertObject:bar atIndex:barNumber - 1];
 }
 
 - (void)addProgession:(Progression *)progression withStrumPattern:(int)strumPatternNumber toBar:(Bar *)bar
