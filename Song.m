@@ -11,21 +11,25 @@
 #import <tgmath.h>
 
 @interface Song()
-
 @property (nonatomic, strong) NSMutableArray *bars;
-
 @end
+
+NSMutableDictionary *notes;
+NSMutableDictionary *chordSteps;
 
 @implementation Song
 
-+ (NSDictionary *) notes
++ (void) initialize
 {
-  static NSDictionary *notes;
-  if(notes == nil)
-  {
-    notes = @{ @"C": @60, @"C#": @61, @"D": @62, @"D#": @63, @"E": @64, @"F": @65, @"F#": @66, @"G": @67, @"G#": @68, @"A": @69, @"A#": @70, @"B": @71};
-  }
-  return notes;
+  NSArray *noteKeys = @[@"C", @"C#", @"D", @"D#", @"E", @"F", @"F#", @"G", @"G#", @"A", @"A#", @"B"];
+  
+  // this where we want the keys to start. 60 is middle C
+  NSArray *noteValues = @[@60, @61, @62, @63, @64, @65, @66, @67, @68, @69, @70, @71];
+  notes = [[NSMutableDictionary alloc] initWithObjects:noteValues forKeys:noteKeys];
+  
+  NSArray *steps = @[@0, @2, @4, @5, @7, @9, @11];
+  NSArray *chords = @[@"I", @"ii", @"iii", @"IV", @"V", @"vi", @"vii"];
+  chordSteps = [[NSMutableDictionary alloc] initWithObjects:steps forKeys:chords];
 }
 
 // gets the first beat number for the given barNumber
@@ -35,12 +39,15 @@
   return (4 * barNumber) - 3;
 }
 
-- (id)init
+- (id)initWithSequence:(MusicSequence)sequence track:(MusicTrack)track
 {
   self = [super init];
   if(self)
   {
+    [self setSequence:sequence];
+    [self setTrack:track];
     [self setBars:[[NSMutableArray alloc] init]];
+    [self setKey:@"C"];
   }
   return self;
 }
@@ -133,7 +140,9 @@
   NSArray *chords = [progression chords];
   NSArray *strumEvents = [StrumPattern strumEventsForPatternNumber:strumPatternNumber];
   
-  int currentNote = [[[Song notes] objectForKey:[chords objectAtIndex:0]] integerValue];
+  int chordStep = [[chordSteps objectForKey:[chords objectAtIndex:0]] integerValue];
+  int currentNote = [self noteForChordStep:chordStep];
+  
   MusicTimeStamp currentBeat = 1.0;
   
   for(NSValue *value in strumEvents)
@@ -144,7 +153,8 @@
     MusicTimeStamp timestamp = strumEvent.timestamp;
     if(floor(timestamp) != currentBeat)
     {
-      currentNote = [[[Song notes] objectForKey:[chords objectAtIndex:floor(timestamp - 1.0)]] integerValue];
+      chordStep = [[chordSteps objectForKey:[chords objectAtIndex:floor(timestamp - 1.0)]] integerValue];
+      currentNote = [self noteForChordStep:chordStep];
     }
     
     currentBeat = timestamp;
@@ -162,6 +172,17 @@
   
   [bar setStrumPatternNumber:strumPatternNumber];
   [bar setProgression:progression];
+}
+
+- (int)noteForChordStep:(int)chordStep
+{
+  int keyNote = [[notes objectForKey:[self key]] integerValue];
+  int note = keyNote;
+  if(keyNote != NSNotFound)
+  {
+    note = keyNote + chordStep;
+  }
+  return note;
 }
 
 @end

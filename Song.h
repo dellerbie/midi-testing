@@ -15,9 +15,11 @@
 
 @property (nonatomic) MusicTrack track;
 @property (nonatomic) MusicSequence sequence;
+@property (nonatomic, strong) NSString *key;
 
 + (MusicTimeStamp)beatNumberForBarNumber:(int)barNumber;
 
+- (id)initWithSequence:(MusicSequence)sequence track:(MusicTrack)track;
 - (Bar *)appendBar;
 - (void)removeBar:(Bar *)bar;
 - (void)moveBar:(Bar *)bar toBarNumber:(int)barNumber;

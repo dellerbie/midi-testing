@@ -165,19 +165,18 @@
   MusicTrackNewExtendedTempoEvent(tempoTrack, 0, 80.0);
   
   // add events to tracks
-  Song *song = [[Song alloc] init];
-  [song setTrack:track];
-  [song setSequence:sequence];
+  Song *song = [[Song alloc] initWithSequence:sequence track:track];
+  [song setKey:@"A"];
   
   Bar *bar = [song appendBar];
-  Progression *progression = [[Progression alloc] initWithChords: @[@"C", @"C", @"F", @"F"]];
+  Progression *progression = [[Progression alloc] initWithChords: @[@"I", @"I", @"IV", @"IV"]];
   [song addProgession:progression withStrumPattern:1 toBar:bar];
   
   Bar *bar2 = [song appendBar];
-  Progression *progression2 = [[Progression alloc] initWithChords: @[@"G", @"C", @"F", @"G"]];
+  Progression *progression2 = [[Progression alloc] initWithChords: @[@"V", @"I", @"IV", @"V"]];
   [song addProgession:progression2 withStrumPattern:1 toBar:bar2];
   
-  [song removeBar:bar];
+//  [song removeBar:bar];
   
   NSLog(@"\nSong info: %@", song);
   [self logMusicEventsForTrack:track];
