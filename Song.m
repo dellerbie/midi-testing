@@ -28,7 +28,7 @@ NSMutableDictionary *chordSteps;
   notes = [[NSMutableDictionary alloc] initWithObjects:noteValues forKeys:noteKeys];
   
   NSArray *steps = @[@0, @2, @4, @5, @7, @9, @11];
-  NSArray *chords = @[@"I", @"ii", @"iii", @"IV", @"V", @"vi", @"vii"];
+  NSArray *chords = @[@"I", @"II", @"III", @"IV", @"V", @"VI", @"VII"];
   chordSteps = [[NSMutableDictionary alloc] initWithObjects:steps forKeys:chords];
 }
 
@@ -48,6 +48,34 @@ NSMutableDictionary *chordSteps;
     [self setTrack:track];
     [self setBars:[[NSMutableArray alloc] init]];
     [self setKey:@"C"];
+  }
+  return self;
+}
+
+- (id)initWithSequence:(MusicSequence)sequence track:(MusicTrack)track file:(NSString *)fileName
+{
+  self = [self initWithSequence:sequence track:track];
+  if(self)
+  {
+    NSBundle *applicationBundle = [NSBundle mainBundle];
+    NSString *path = [applicationBundle pathForResource:fileName ofType:@"plist"];
+    if(path)
+    {
+      NSMutableDictionary *songSettings = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
+      [self setKey:[songSettings objectForKey:@"Key"]];
+
+      // add the bars to the song
+      NSArray *tmpBars = [songSettings objectForKey:@"Bars"];
+      for(NSDictionary *bar in tmpBars)
+      {
+        int strumPattern = [[bar objectForKey:@"StrumPattern"] integerValue];
+        NSString *p = [bar objectForKey:@"Progression"];
+        NSArray *chords = [p componentsSeparatedByString:@","];
+        Progression *progression = [[Progression alloc] initWithChords:chords];
+        Bar *bar = [self appendBar];
+        [self addProgession:progression withStrumPattern:strumPattern toBar:bar];
+      }
+    }
   }
   return self;
 }

@@ -31,6 +31,7 @@
 		CEB5E24018216B4200763223 /* Bar.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB5E23F18216B4200763223 /* Bar.m */; };
 		CEB5E24318216BF700763223 /* Progression.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB5E24218216BF700763223 /* Progression.m */; };
 		CEB5E24618216C1B00763223 /* StrumPattern.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB5E24518216C1B00763223 /* StrumPattern.m */; };
+		CEB5E29B1823102600763223 /* Song.plist in Resources */ = {isa = PBXBuildFile; fileRef = CEB5E29A1823102600763223 /* Song.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 		CEB5E24218216BF700763223 /* Progression.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Progression.m; sourceTree = "<group>"; };
 		CEB5E24418216C1B00763223 /* StrumPattern.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StrumPattern.h; sourceTree = "<group>"; };
 		CEB5E24518216C1B00763223 /* StrumPattern.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StrumPattern.m; sourceTree = "<group>"; };
+		CEB5E29A1823102600763223 /* Song.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Song.plist; path = MidiTesting/Song.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +179,7 @@
 		CE1569181819A12D0044F9CC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CEB5E29A1823102600763223 /* Song.plist */,
 				CE1569191819A13B0044F9CC /* Gorts_Filters.SF2 */,
 				CE15691A1819A13B0044F9CC /* simpletest.mid */,
 				CE1568F21819A08A0044F9CC /* Images.xcassets */,
@@ -293,6 +296,7 @@
 				CE15691C1819A13B0044F9CC /* simpletest.mid in Resources */,
 				CE1568E51819A08A0044F9CC /* InfoPlist.strings in Resources */,
 				CE1568EE1819A08A0044F9CC /* Main.storyboard in Resources */,
+				CEB5E29B1823102600763223 /* Song.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

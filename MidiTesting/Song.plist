@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Bars</key>
+	<array>
+		<dict>
+			<key>Progression</key>
+			<string>IV,II,I,V</string>
+			<key>StrumPattern</key>
+			<string>1</string>
+		</dict>
+		<dict>
+			<key>StrumPattern</key>
+			<string>1</string>
+			<key>Progression</key>
+			<string>I,I,IV,IV</string>
+		</dict>
+	</array>
+	<key>Key</key>
+	<string>G</string>
+</dict>
+</plist>

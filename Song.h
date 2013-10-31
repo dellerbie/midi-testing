@@ -20,6 +20,8 @@
 + (MusicTimeStamp)beatNumberForBarNumber:(int)barNumber;
 
 - (id)initWithSequence:(MusicSequence)sequence track:(MusicTrack)track;
+- (id)initWithSequence:(MusicSequence)sequence track:(MusicTrack)track file:(NSString *)fileName;
+
 - (Bar *)appendBar;
 - (void)removeBar:(Bar *)bar;
 - (void)moveBar:(Bar *)bar toBarNumber:(int)barNumber;

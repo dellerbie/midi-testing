@@ -17,20 +17,20 @@
   self = [super init];
   if(self)
   {
-    NSAssert([chords count] == 4, @"At least 4 chords are required for a progession.");
-    [self setChords:chords];
+    NSAssert([chords count] == 4, @"4 chords are required for a progession.");
+    NSMutableArray *upcaseChords = [[NSMutableArray alloc] init];
+    for(NSString *chord in chords)
+    {
+      [upcaseChords addObject:[chord uppercaseString]];
+    }
+    [self setChords:upcaseChords];
   }
   return self;
 }
 
 - (NSString *)description
 {
-  NSString *chords = @"";
-  for(NSString *chord in self.chords)
-  {
-    chords = [chords stringByAppendingString:chord];
-  }
-  return [NSString stringWithFormat:@"[%@]", chords];
+  return [NSString stringWithFormat:@"[%@]", [[self chords] componentsJoinedByString:@","]];;
 }
 
 @end
