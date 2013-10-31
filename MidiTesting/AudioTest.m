@@ -177,7 +177,7 @@
   Progression *progression2 = [[Progression alloc] initWithChords: @[@"G", @"C", @"F", @"G"]];
   [song addProgession:progression2 withStrumPattern:1 toBar:bar2];
   
-  [song moveBar:bar2 toBarNumber:1];
+  [song removeBar:bar];
   
   NSLog(@"\nSong info: %@", song);
   [self logMusicEventsForTrack:track];

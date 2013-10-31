@@ -71,8 +71,24 @@
 
 - (void)removeBar:(Bar *)bar
 {
-  // TODO: clear events for bar
-  // SEE: MusicTrackCut
+  int index = [[self bars] indexOfObject:bar];
+  if(index == NSNotFound)
+  {
+    NSLog(@"Couldn't find bar to remove from Song#bars");
+    return;
+  }
+  
+  NSLog(@"index of bar to remove: %i", index);
+  
+  // remove the events from the track
+  MusicTimeStamp beatToRemoveFrom = [Song beatNumberForBarNumber:index+1];
+  MusicTimeStamp beatEndTime = beatToRemoveFrom + 4;
+  
+  NSLog(@"beatToRemoveFrom: %f, beatEndTime: %f", beatToRemoveFrom, beatEndTime);
+  OSStatus result = MusicTrackCut(self.track, beatToRemoveFrom, beatEndTime);
+  NSAssert (result == noErr, @"Unable to cut track. Error code: %d '%.4s'", (int) result, (const char *)&result);
+  
+  // remove it from the bars list
   [[self bars] removeObject:bar];
 }
 
