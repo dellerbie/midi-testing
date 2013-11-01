@@ -8,47 +8,66 @@
 
 #import "StrumPattern.h"
 
+NSMutableDictionary *strumPatterns;
+
 @implementation StrumPattern
+
++ (void)initialize
+{
+  strumPatterns = [[NSMutableDictionary alloc] init];
+  
+  NSString *patternsFile = [[NSBundle mainBundle] pathForResource:@"StrumPatterns" ofType:@"txt"];
+  NSString *patternsTxt = [NSString stringWithContentsOfFile:patternsFile encoding:NSUTF8StringEncoding error:NULL];
+  NSArray *patterns = [patternsTxt componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+  
+  int patternNumber = 1;
+  for(NSString *pattern in patterns)
+  {
+    // ignore comment and blank lines
+    if([pattern hasPrefix:@"#"] || [pattern length] == 0)
+    {
+      continue;
+    }
+    NSArray *strumEvents = [pattern componentsSeparatedByString:@"|"];
+    for(NSString *strumEvent in strumEvents)
+    {
+      NSArray *components = [strumEvent componentsSeparatedByString:@","];
+      [self createStrumEventFromComponents:components forPatternNumber: patternNumber];
+    }
+    
+    patternNumber++;
+  }
+}
+
++ (void)createStrumEventFromComponents:(NSArray *)components forPatternNumber:(int)patternNumber
+{
+  NSAssert([components count] == 3, @"Invalid component format for pattern number %i. %@", patternNumber, components);
+  
+  NSString *patternName = [NSString stringWithFormat:@"pattern%i", patternNumber];
+  NSArray *strumEvents = [strumPatterns objectForKey: patternName];
+  if(strumEvents == nil)
+  {
+    [strumPatterns setObject:[[NSMutableArray alloc] init] forKey:patternName];
+  }
+  
+  StrumEvent strumEvent;
+  strumEvent.timestamp = [[components objectAtIndex:0] doubleValue];
+  strumEvent.duration = [[components objectAtIndex:1] doubleValue];
+  strumEvent.strumDirection = [[components objectAtIndex:2] integerValue];
+  
+  NSMutableArray *strumEventsForPattern = [strumPatterns objectForKey:patternName];
+  NSValue *value = [NSValue valueWithBytes:&strumEvent objCType:@encode(StrumEvent)];
+  [strumEventsForPattern addObject:value];
+}
+
 
 + (NSArray *)strumEventsForPatternNumber:(int)patternNumber
 {
-  NSMutableArray *events = [[NSMutableArray alloc] init];
-  
-  NSString *pattern = [NSString stringWithFormat:@"pattern%i", patternNumber];
-  
-  for(NSArray *timeEvent in [self performSelector: NSSelectorFromString(pattern)])
-  {
-    StrumEvent strumEvent;
-    strumEvent.timestamp = [[timeEvent objectAtIndex:0] doubleValue];
-    strumEvent.duration = [[timeEvent objectAtIndex:1] doubleValue];
-    strumEvent.strumDirection = [[timeEvent objectAtIndex:2] integerValue];;
-    NSValue *value = [NSValue valueWithBytes:&strumEvent objCType:@encode(StrumEvent)];
-    [events addObject:value];
-  }
-  
-  return [events copy];
+  NSString *patternName = [NSString stringWithFormat:@"pattern%i", patternNumber];
+  NSArray *strumEvents = [strumPatterns objectForKey: patternName];
+  NSAssert(strumEvents != nil, @"Strum Pattern%i is not defined", patternNumber);
+
+  return strumEvents;
 }
-
-+ (NSArray *)pattern1
-{
-  static NSArray *rawTimeEvents = nil;
-  if(rawTimeEvents == nil)
-  {
-    rawTimeEvents = @[@[@1.0, @1.0, @1.0], @[@2.0, @1.0, @1.0], @[@3.0, @1.0, @1.0], @[@4.0, @1.0, @1.0]];
-  }
-  return rawTimeEvents;
-}
-
-+ (NSArray *)pattern2
-{
-  static NSArray *rawTimeEvents = nil;
-  if(rawTimeEvents == nil)
-  {
-    rawTimeEvents = @[@[@1.0, @0.5, @1.0], @[@1.5, @0.5, @1.0], @[@2.0, @0.5, @1.0], @[@2.5, @0.5, @1.0], @[@3.0, @0.5, @1.0], @[@3.5, @0.5, @1.0], @[@4.0, @0.5, @1.0], @[@4.5, @0.5, @1.0]];
-  }
-  return rawTimeEvents;
-}
-
-
 
 @end

@@ -167,8 +167,8 @@
   // add events to tracks
   Song *song = [[Song alloc] initWithSequence:sequence track:track file:@"Song"];
   
-  NSLog(@"\nSong info: %@", song);
-  [self logMusicEventsForTrack:track];
+//  NSLog(@"\nSong info: %@", song);
+//  [self logMusicEventsForTrack:track];
 
   // target tracks to graph nodes or midi endpoints
   MusicTrackSetDestNode(track, samplerNode);
